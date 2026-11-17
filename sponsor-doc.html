@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Sponsorship One-Pager</title>
+  <style>
+    /* Hanken Grotesk latin subset, reused from the cover page */
+    @font-face {
+      font-family: 'Hanken Grotesk';
+      font-style: normal;
+      font-weight: 400 700;
+      src: url("static/c7f78753.woff2") format('woff2');
+    }
+
+    :root {
+      --red: #BB2528;
+      --ink: #1A1715;
+      --ink-2: #3A3430;
+      --muted: #5C5650;
+      --rule: #E3DCD3;
+    }
+
+    @page {
+      size: 816px 1056px;
+      margin: 0;
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+    }
+
+    .page {
+      width: 816px;
+      height: 1056px;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      color: var(--ink);
+      font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    }
+
+    .abs {
+      position: absolute;
+    }
+
+    /* ---------- Header ---------- */
+    .topbar {
+      left: 0;
+      top: 0;
+      width: 816px;
+      height: 10px;
+      background: var(--red);
+    }
+
+    .brand {
+      left: 36px;
+      top: 30px;
+    }
+
+    .brand .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    /* The logo's W doubles as the W of the wordmark; text sits on its baseline.
+       The "i" is a dotless ı (U+0131) so the badger head serves as its dot. */
+    .brand h1 {
+      margin: 8px 0 0;
+      display: flex;
+      align-items: baseline;
+      font-weight: 700;
+      font-size: 60px;
+      line-height: 1;
+      letter-spacing: -.025em;
+      color: var(--ink);
+    }
+
+    .brand h1 img {
+      height: 49px;
+      width: auto;
+      margin-right: -15px;
+      /* Optical alignment: the W's left arm slants inward, so hang it past the edge to line up with the tagline */
+      margin-left: -5px;
+    }
+
+    /* h1's line box reserves descender space below the logo; pull the tagline up to sit under the wordmark */
+    .brand p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--ink-2);
+    }
+
+    .contact {
+      right: 36px;
+      top: 34px;
+      text-align: right;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .contact .k {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact a {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact div+div {
+      margin-top: 4px;
+    }
+
+    .headrule {
+      left: 36px;
+      top: 140px;
+      width: 744px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    /* ---------- Bot + callouts ---------- */
+    .bot {
+      left: 289px;
+      top: 148px;
+      height: 570px;
+      width: auto;
+    }
+
+    svg.leaders {
+      left: 0;
+      top: 0;
+      width: 816px;
+      height: 1056px;
+      pointer-events: none;
+    }
+
+    svg.leaders line {
+      stroke: var(--red);
+      stroke-width: 1.25;
+    }
+
+    svg.leaders circle {
+      fill: var(--red);
+      stroke: #fff;
+      stroke-width: 1.5;
+    }
+
+    .call {
+      width: 190px;
+    }
+
+    .call h3 {
+      margin: 0;
+      line-height: 16px;
+      padding-bottom: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .call p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      line-height: 1.35;
+      color: var(--ink-2);
+    }
+
+    .call.l {
+      left: 36px;
+    }
+
+    .call.r {
+      left: 590px;
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      left: 0;
+      bottom: 0;
+      width: 816px;
+      height: 310px;
+      box-sizing: border-box;
+      background: var(--red);
+      color: #fff;
+      padding: 26px 36px;
+    }
+
+    .footer .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .footer h2 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 30px;
+      letter-spacing: -.02em;
+    }
+
+    .footer a.cta {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px solid #F7DCDC;
+      padding-bottom: 2px;
+    }
+
+    .tiers {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 28px;
+    }
+
+    .tier {
+      border-top: 1px solid rgba(255, 255, 255, .55);
+      padding-top: 12px;
+    }
+
+    .t-name {
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+
+    .t-amt {
+      margin-top: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #F7DCDC;
+    }
+
+    .tier ul {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tier li {
+      font-size: 13.5px;
+      line-height: 1.35;
+      padding: 0 0 8px 14px;
+      position: relative;
+    }
+
+    .tier li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 5px;
+      height: 5px;
+      background: #F7DCDC;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="abs topbar"></div>
+
+    <!-- Header -->
+    <div class="abs brand">
+      <div class="eyebrow">Sponsorship Packet · 2026–2027</div>
+      <h1 aria-label="WiscoHumanoids"><img src="static/6c6d831c.png" alt=""><span>ıscoHumanoids</span></h1>
+      <p>The first undergrad-led humanoid robotics team in the US</p>
+    </div>
+    <div class="abs contact">
+      <div><span class="k">Email</span><br><a href="mailto:outreach@wiscohumanoids.com">outreach@wiscohumanoids.com</a>
+      </div>
+      <div><span class="k">Web</span><br><a href="https://wiscohumanoids.com">WiscoHumanoids.com</a></div>
+    </div>
+    <div class="abs headrule"></div>
+
+    <!-- Bot (405x971 source, rendered at 570px tall => scale 0.587) -->
+    <img class="abs bot" src="static/1ba051e0.png" alt="Render of the Gen 1 WiscoHumanoids robot">
+
+    <!-- Leader lines: callout edge -> point on bot -->
+    <svg class="abs leaders" viewBox="0 0 816 1056">
+      <line x1="228" y1="310" x2="318" y2="310" />
+      <circle cx="318" cy="310" r="3.5" />
+      <line x1="228" y1="400" x2="322" y2="400" />
+      <circle cx="322" cy="400" r="3.5" />
+      <line x1="228" y1="490" x2="349" y2="490" />
+      <circle cx="349" cy="490" r="3.5" />
+      <line x1="228" y1="580" x2="350" y2="580" />
+      <circle cx="350" cy="580" r="3.5" />
+      <line x1="584" y1="183" x2="431" y2="183" />
+      <circle cx="431" cy="183" r="3.5" />
+      <line x1="584" y1="295" x2="447" y2="295" />
+      <circle cx="447" cy="295" r="3.5" />
+      <line x1="584" y1="414" x2="437" y2="414" />
+      <circle cx="437" cy="414" r="3.5" />
+      <line x1="584" y1="671" x2="449" y2="671" />
+      <circle cx="449" cy="671" r="3.5" />
+    </svg>
+
+    <div class="abs call l" style="top:302px">
+      <h3>Arms</h3>
+      <p>Seven joints each, shoulder to wrist, at just 4.4 kg</p>
+    </div>
+    <div class="abs call l" style="top:392px">
+      <h3>Hands</h3>
+      <p>Tendon-driven fingers, motors kept in the forearm</p>
+    </div>
+    <div class="abs call l" style="top:482px">
+      <h3>Legs</h3>
+      <p>Six joints per leg, now in assembly</p>
+    </div>
+    <div class="abs call l" style="top:572px">
+      <h3>Actuators</h3>
+      <p>120 Nm class, 48 V, linked over EtherCAT</p>
+    </div>
+    <div class="abs call r" style="top:175px">
+      <h3>Head</h3>
+      <p>Two joints and stereo vision to see the world</p>
+    </div>
+    <div class="abs call r" style="top:287px">
+      <h3>Torso</h3>
+      <p>Houses the battery, compute, and our own power board</p>
+    </div>
+    <div class="abs call r" style="top:406px">
+      <h3>Waist</h3>
+      <p>Differential design: two motors share the load</p>
+    </div>
+    <div class="abs call r" style="top:663px">
+      <h3>Locomotion</h3>
+      <p>Walking learned with RL in sim, headed to hardware</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="abs footer">
+      <div class="head">
+        <h2>Work with us</h2>
+        <a class="cta" href="#">What we need to make it happen (should link to static pdf on website)</a>
+      </div>
+      <div class="tiers">
+        <div class="tier">
+          <div class="t-name">Joint</div>
+          <div class="t-amt">$2,500+</div>
+          <ul>
+            <li>Logo on a particular joint</li>
+            <li>Searchable résumé book</li>
+            <li>Logo on our merch</li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="t-name">Limb</div>
+          <div class="t-amt">$5,000+</div>
+          <ul>
+            <li>Seat on design review</li>
+            <li>Mini career fair and talks</li>
+            <!-- <li>Newsletter feature (if we make one)</li> -->
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="t-name">Core</div>
+          <div class="t-amt">$10,000+</div>
+          <ul>
+            <li>Logo on the torso</li>
+            <li>Post your job requirements, get engineers shortlisted</li>
+            <li>A video of Gen 1 working with your product</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
