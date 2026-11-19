@@ -1,0 +1,9 @@
+# Claude Code
+CLAUDE.md
+.claude/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
