@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Render sponsor-doc.html to output/sponsor-doc.pdf and output/sponsor-doc-<page>.png
+# Render sponsor-doc.html to output/sponsor-doc.pdf and output/sponsor-doc-image.png
 
 # Uses Chrome to print to pdf
 set -euo pipefail
@@ -12,5 +12,5 @@ command -v pdftoppm >/dev/null || { echo "Need pdftoppm (apt install poppler-uti
 mkdir -p output
 "$CHROME" --headless --disable-gpu --no-pdf-header-footer \
   --print-to-pdf=output/sponsor-doc.pdf "file://$PWD/sponsor-doc.html"
-pdftoppm -png -r 150 output/sponsor-doc.pdf output/sponsor-doc
+pdftoppm -png -singlefile -r 150 output/sponsor-doc.pdf output/sponsor-doc-image
 echo "Wrote:"; ls output
